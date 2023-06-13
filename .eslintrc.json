@@ -26,7 +26,7 @@
   ],
   "rules": {
     "camelcase": "off",
-    "import/no-unresolved": "error",
+    //"import/no-unresolved": "error",
     "@typescript-eslint/naming-convention": [
       "error",
       {
@@ -45,14 +45,14 @@
     "no-useless-constructor": "off",
     "no-empty-function": "off",
     "lines-between-class-members": "off",
-    "import/extensions": [
+    /*"import/extensions": [
       "error",
       "ignorePackages",
       {
         "ts": "never",
         "tsx": "never"
       }
-    ],
+    ],*/
     "import-helpers/order-imports": [
       "warn",
       {
@@ -64,13 +64,19 @@
         }
       }
     ],
-    "import/no-extraneous-dependencies": [
+    //"import/no-extraneous-dependencies": [
+    //"error",
+    //{
+    //"devDependencies": ["**/*.spec.js"]
+    //}
+    //],
+    "prettier/prettier": [
       "error",
+      {},
       {
-        "devDependencies": ["**/*.spec.js"]
+        "usePrettierrc": false
       }
     ],
-    "prettier/prettier": "error",
     "react/jsx-filename-extension": [
       1,
       {
@@ -81,7 +87,8 @@
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "semi": ["error", "always"],
-    "indent": ["error", 2]
+    "indent": ["error", 2],
+    "comma-dangle": ["error", "always-multiline"]
   },
   "settings": {
     "import/resolver": {
