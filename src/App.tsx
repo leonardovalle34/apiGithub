@@ -1,41 +1,51 @@
+/* eslint-disable import-helpers/order-imports */
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import reactLogo from "./assets/react.svg";
-import Main from "./components/Main";
-import DataDisplayer from "./redux/dataDisplayer";
-
-import viteLogo from "/vite.svg";
+import ghLogo from "./assets/imgs/gh.png";
 
 import "./App.css";
+import {
+  MainContainer,
+  MainInput,
+  Title,
+  ButtonSearch,
+  InternalDiv,
+} from "./components/GlobalComponents";
+
+import { BsSearch } from "react-icons/bs";
+import { simulateFetchApi } from "./redux/dataApi";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [user, setUser] = useState("");
+  const dispatch = useDispatch();
+
+  const getData = async () => {
+    return await dispatch(simulateFetchApi(user));
+  };
 
   return (
-    <>
-      <DataDisplayer />
+    <MainContainer>
       <div>
-        <Main />
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+        <Title>API Github</Title>
+        <a href="#" rel="noreferrer">
+          <img src={ghLogo} className="logo" alt="ghLogo" />
         </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <InternalDiv>
+          <MainInput
+            onChange={(el: any) => setUser(el.target.value)}
+            placeholder="Digite o nome do perfil"
+            value={user}
+          />
+          <Link to={`/perfil`}>
+            <ButtonSearch onClick={() => getData()}>
+              <BsSearch />
+            </ButtonSearch>
+          </Link>
+        </InternalDiv>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </MainContainer>
   );
 }
 

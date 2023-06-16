@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { dataInstance, simulateFetchApi } from "./dataApi";
+import { simulateFetchApi } from "./dataApi";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface DataState {
@@ -14,7 +14,7 @@ const initialState: DataState = {
 };
 export const fetchDataAsync = createAsyncThunk(
   "data/fetchData",
-  async (): Promise<Array<dataInstance>> => {
+  async (): Promise<any> => {
     const response = await simulateFetchApi();
     return response;
   }
@@ -31,7 +31,7 @@ export const dataSlice = createSlice({
       })
       .addCase(
         fetchDataAsync.fulfilled,
-        (state: DataState, action: PayloadAction<Array<dataInstance>>) => {
+        (state: DataState, action: PayloadAction<any>) => {
           state.loading = false;
           state.data = action.payload;
         }
