@@ -15,14 +15,14 @@ import {
 } from "./components/GlobalComponents";
 
 import { BsSearch } from "react-icons/bs";
-import { simulateFetchApi } from "./redux/dataApi";
+import { fetchDataAsync } from "./redux/dataAction";
 
 function App() {
   const [user, setUser] = useState("");
   const dispatch = useDispatch();
 
   const getData = async () => {
-    return await dispatch(simulateFetchApi(user));
+    return await dispatch(fetchDataAsync(user));
   };
 
   return (

@@ -1,30 +1,39 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { MainContainer, InternalDiv } from "../components/GlobalComponents";
-import dataSlice from "../redux/dataSlice";
+import {
+  MainContainer,
+  InternalDiv,
+  Loading,
+} from "../components/GlobalComponents";
+import { selectedData, loadingState } from "../redux/dataSlice";
 
 export default function Profile() {
-  const dataFromGithub = useSelector(dataSlice);
+  const dataFromGithub = useSelector(selectedData);
+  const loading = useSelector(loadingState);
 
-  console.log(dataSlice);
   return (
     <MainContainer>
-      <InternalDiv>
-        <img src={dataFromGithub.data.avatar_url}></img>
-      </InternalDiv>
-      <InternalDiv>
-        <p>{dataFromGithub.data.bio}</p>
-      </InternalDiv>
-      <InternalDiv>
-        <p>{dataFromGithub.data.followers}</p>
-      </InternalDiv>
-      <InternalDiv>
-        <p>{dataFromGithub.data.following}</p>
-      </InternalDiv>
-      <InternalDiv>
-        <p>{dataFromGithub.data.login}</p>
-      </InternalDiv>
+      {loading == true && <Loading />}
+      {loading == false && (
+        <>
+          <InternalDiv>
+            <img src={dataFromGithub?.data?.data?.avatar_url}></img>
+          </InternalDiv>
+          <InternalDiv>
+            <p>{dataFromGithub?.data?.data?.bio}</p>
+          </InternalDiv>
+          <InternalDiv>
+            <p>{dataFromGithub?.data?.data?.followers}</p>
+          </InternalDiv>
+          <InternalDiv>
+            <p>{dataFromGithub?.data?.data?.following}</p>
+          </InternalDiv>
+          <InternalDiv>
+            <p>{dataFromGithub?.data?.data?.login}</p>
+          </InternalDiv>
+        </>
+      )}
       <Link to={"/"}>Back</Link>
     </MainContainer>
   );
