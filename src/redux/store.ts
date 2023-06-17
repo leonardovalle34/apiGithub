@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import thunk from "redux-thunk";
 
-import dataSlice from "./dataSlice";
+import { getDataState } from "./dataSlice";
 
 export const store = configureStore({
   reducer: {
-    data: dataSlice,
+    data: getDataState,
   },
+  middleware: [thunk],
 });
 
 export type appDispatch = typeof store.dispatch;
