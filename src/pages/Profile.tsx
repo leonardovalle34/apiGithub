@@ -5,6 +5,7 @@ import {
   MainContainer,
   InternalDiv,
   Loading,
+  ProfileImg,
 } from "../components/GlobalComponents";
 import { selectedData, loadingState } from "../redux/dataSlice";
 
@@ -17,24 +18,37 @@ export default function Profile() {
       {loading == true && <Loading />}
       {loading == false && (
         <>
-          <InternalDiv>
-            <img src={dataFromGithub?.data?.data?.avatar_url}></img>
-          </InternalDiv>
-          <InternalDiv>
-            <p>{dataFromGithub?.data?.data?.bio}</p>
-          </InternalDiv>
-          <InternalDiv>
-            <p>{dataFromGithub?.data?.data?.followers}</p>
-          </InternalDiv>
-          <InternalDiv>
-            <p>{dataFromGithub?.data?.data?.following}</p>
-          </InternalDiv>
-          <InternalDiv>
-            <p>{dataFromGithub?.data?.data?.login}</p>
+          <InternalDiv width="100%">
+            <InternalDiv display="flex" flexDirection="column" width="15%">
+              <Link to={"/"}>Back</Link>
+              <InternalDiv>
+                <ProfileImg src={dataFromGithub?.data?.avatar_url}></ProfileImg>
+              </InternalDiv>
+              <InternalDiv display="flex" flexDirection="column">
+                <p>
+                  @<strong>{dataFromGithub?.data?.login}</strong>
+                </p>
+                <p>{dataFromGithub?.data?.name}</p>
+              </InternalDiv>
+              <InternalDiv>
+                <p>{dataFromGithub?.data?.followers}</p>
+              </InternalDiv>
+              <InternalDiv>
+                <p>{dataFromGithub?.data?.following}</p>
+              </InternalDiv>
+              <InternalDiv>
+                <p>{dataFromGithub?.data?.blog}</p>
+              </InternalDiv>
+              <InternalDiv>
+                <p>{dataFromGithub?.data?.location}</p>
+              </InternalDiv>
+            </InternalDiv>
+            <InternalDiv width="70%" backgroundColor="#777272" marginLeft="10%">
+              Repoinfo
+            </InternalDiv>
           </InternalDiv>
         </>
       )}
-      <Link to={"/"}>Back</Link>
     </MainContainer>
   );
 }

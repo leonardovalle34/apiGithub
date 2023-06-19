@@ -1,17 +1,17 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-//import { simulateFetchApi } from "./dataApi";
+import { IUser } from "../interfaces/userInterface";
 import { fetchDataAsync } from "./dataAction";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface DataState {
   loading: boolean;
-  data: any;
+  dataState: any;
 }
 
 const initialState: DataState = {
   loading: false,
-  data: [],
+  dataState: [],
 };
 
 const dataSliceState = createSlice({
@@ -25,9 +25,9 @@ const dataSliceState = createSlice({
       })
       .addCase(
         fetchDataAsync.fulfilled,
-        (state: DataState, action: PayloadAction<any>) => {
+        (state: DataState, action: PayloadAction<IUser>) => {
           state.loading = false;
-          state.data = action.payload;
+          state.dataState = action.payload;
         }
       )
       .addCase(fetchDataAsync.rejected, (state: DataState) => {
@@ -38,5 +38,5 @@ const dataSliceState = createSlice({
 
 export const getDataState = dataSliceState.reducer;
 
-export const selectedData = (state: any) => state.data;
+export const selectedData = (state: any) => state.data.dataState;
 export const loadingState = (state: any) => state.data.loading;

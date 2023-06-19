@@ -1,15 +1,32 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+import { CSSProperties } from "react";
 import styled from "styled-components";
 
+interface StyledDivProps {
+  display?: CSSProperties["display"];
+  flexDirection?: CSSProperties["flexDirection"];
+  width?: CSSProperties["width"];
+  backgroundColor?: CSSProperties["backgroundColor"];
+  marginLeft?: CSSProperties["marginLeft"];
+}
+
 export const MainContainer = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100%;
   padding: 16px;
   background: #4f4f4f;
 `;
 
-export const InternalDiv = styled.div`
-  display: flex;
-  flex-direction: row;
+export const InternalDiv = styled.div<StyledDivProps>`
+  display: ${(props) => (props.display ? props.display : "flex")};
+  flex-direction: ${(props) =>
+    props.flexDirection ? props.flexDirection : "row"};
+  width: ${(props) => (props.width ? props.width : "100%")};
+  background-color: ${(props) =>
+    props.backgroundColor ? props.backgroundColor : "#4f4f4f"};
+  margin-left: ${(props) => (props.marginLeft ? props.marginLeft : "3px")};
+  justify-content: center;
+}
 `;
 
 export const MainInput = styled.input`
@@ -44,4 +61,9 @@ export const Loading = styled.div`
     100% {
       transform: rotate(360deg);
     }
+`;
+
+export const ProfileImg = styled.img`
+  width: 100%;
+  border-radius: 100px;
 `;
