@@ -12,6 +12,7 @@ import {
   InternalDiv,
   Loading,
   ProfileImg,
+  TextSpan,
 } from "../components/GlobalComponents";
 import { selectedData, loadingState } from "../redux/dataSlice";
 
@@ -25,7 +26,7 @@ export default function Profile() {
       {loading == false && (
         <>
           <InternalDiv width="100%">
-            <InternalDiv display="flex" flexDirection="column" width="20%">
+            <InternalDiv display="flex" flexDirection="column" width="30%">
               <Link to={"/"}>
                 <BsFillSkipBackwardBtnFill />
               </Link>
@@ -33,38 +34,38 @@ export default function Profile() {
                 <ProfileImg src={dataFromGithub?.data?.avatar_url}></ProfileImg>
               </InternalDiv>
               <InternalDiv>
-                <p>
+                <TextSpan>
                   <MdPersonPin />
                   <strong>{dataFromGithub?.data?.login}</strong>
-                </p>
+                </TextSpan>
               </InternalDiv>
               <InternalDiv>
-                <p>
+                <TextSpan>
                   <BsPersonCircle />
                   {dataFromGithub?.data?.name}
-                </p>
+                </TextSpan>
               </InternalDiv>
               <InternalDiv>
-                <p>
+                <TextSpan>
                   <BsPeopleFill />
                   {dataFromGithub?.data?.followers} Followers
-                </p>
+                </TextSpan>
               </InternalDiv>
               <InternalDiv>
-                <p>
+                <TextSpan>
                   <BsPeopleFill />
                   {dataFromGithub?.data?.following} Following
-                </p>
+                </TextSpan>
               </InternalDiv>
               <InternalDiv>
-                <p>
+                <TextSpan>
                   <MdInsertLink /> {dataFromGithub?.data?.blog}
-                </p>
+                </TextSpan>
               </InternalDiv>
               <InternalDiv>
-                <p>
+                <TextSpan>
                   <MdLocationPin /> {dataFromGithub?.data?.location}
-                </p>
+                </TextSpan>
               </InternalDiv>
             </InternalDiv>
             <InternalDiv width="70%" backgroundColor="#777272" marginLeft="10%">

@@ -18,6 +18,7 @@ export const MainContainer = styled.div`
   background: #4f4f4f;
   justify-content: center;
   display: flex;
+  border-radius: 8px;
 `;
 
 export const InternalDiv = styled.div<StyledDivProps>`
@@ -29,9 +30,15 @@ export const InternalDiv = styled.div<StyledDivProps>`
     props.backgroundColor ? props.backgroundColor : "#4f4f4f"};
   margin-left: ${(props) => (props.marginLeft ? props.marginLeft : "3px")};
   justify-content: ${(props) =>
-    props.justifyContent ? props.justifyContent : "flex-start"}
-  
-}
+    props.justifyContent ? props.justifyContent : "flex-start"};
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 0%;
+  }
 `;
 
 export const MainInput = styled.input`
@@ -72,4 +79,18 @@ export const Loading = styled.div`
 export const ProfileImg = styled.img`
   width: 100%;
   border-radius: 200px;
+  margin: 8px;
+  @media screen and (max-width: 768px) {
+    width: 30%;
+    margin: 10%;
+  }
+`;
+
+export const TextSpan = styled.p`
+  @media screen and (min-width: 769px) and (max-width: 1239px) {
+    font-size: 0.7rem;
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
