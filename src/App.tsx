@@ -27,12 +27,12 @@ function App() {
 
   return (
     <MainContainer>
-      <div>
+      <InternalDiv display="flex" flexDirection="column">
         <Title>API Github</Title>
         <a href="#" rel="noreferrer">
           <img src={ghLogo} className="logo" alt="ghLogo" />
         </a>
-        <InternalDiv>
+        <InternalDiv width="100%" justifyContent="center">
           <MainInput
             onChange={(el: any) => setUser(el.target.value)}
             placeholder="Digite o nome do perfil"
@@ -44,7 +44,7 @@ function App() {
             </ButtonSearch>
           </Link>
         </InternalDiv>
-      </div>
+      </InternalDiv>
     </MainContainer>
   );
 }

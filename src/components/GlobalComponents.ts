@@ -8,6 +8,7 @@ interface StyledDivProps {
   width?: CSSProperties["width"];
   backgroundColor?: CSSProperties["backgroundColor"];
   marginLeft?: CSSProperties["marginLeft"];
+  justifyContent?: CSSProperties["justifyContent"];
 }
 
 export const MainContainer = styled.div`
@@ -15,6 +16,8 @@ export const MainContainer = styled.div`
   height: 100%;
   padding: 16px;
   background: #4f4f4f;
+  justify-content: center;
+  display: flex;
 `;
 
 export const InternalDiv = styled.div<StyledDivProps>`
@@ -25,7 +28,9 @@ export const InternalDiv = styled.div<StyledDivProps>`
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#4f4f4f"};
   margin-left: ${(props) => (props.marginLeft ? props.marginLeft : "3px")};
-  justify-content: center;
+  justify-content: ${(props) =>
+    props.justifyContent ? props.justifyContent : "flex-start"}
+  
 }
 `;
 
@@ -34,6 +39,7 @@ export const MainInput = styled.input`
   height: 5vh;
   font-size: 1.5rem;
   border-radius: 8px;
+  width: 90%;
 `;
 
 export const Title = styled.h1`
@@ -65,5 +71,5 @@ export const Loading = styled.div`
 
 export const ProfileImg = styled.img`
   width: 100%;
-  border-radius: 100px;
+  border-radius: 200px;
 `;
