@@ -13,7 +13,7 @@ interface StyledDivProps {
 
 export const MainContainer = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100;
   padding: 16px;
   background: #4f4f4f;
   justify-content: center;
@@ -31,6 +31,8 @@ export const InternalDiv = styled.div<StyledDivProps>`
   margin-left: ${(props) => (props.marginLeft ? props.marginLeft : "3px")};
   justify-content: ${(props) =>
     props.justifyContent ? props.justifyContent : "flex-start"};
+
+  padding: 16px;
 
   @media screen and (max-width: 768px) {
     display: flex;
@@ -77,7 +79,7 @@ export const Loading = styled.div`
 `;
 
 export const ProfileImg = styled.img`
-  width: 100%;
+  width: 60%;
   border-radius: 200px;
   margin: 8px;
   @media screen and (max-width: 768px) {

@@ -1,6 +1,6 @@
 import { BsPeopleFill } from "react-icons/bs";
 import { BsPersonCircle } from "react-icons/bs";
-import { BsFillSkipBackwardBtnFill } from "react-icons/bs";
+import { MdKeyboardBackspace } from "react-icons/md";
 import { MdLocationPin } from "react-icons/md";
 import { MdPersonPin } from "react-icons/md";
 import { MdInsertLink } from "react-icons/md";
@@ -14,10 +14,16 @@ import {
   ProfileImg,
   TextSpan,
 } from "../components/GlobalComponents";
-import { selectedData, loadingState } from "../redux/dataSlice";
+import Repos from "../components/Repos/Repos";
+import {
+  selectedData,
+  loadingState,
+  selectedReposData,
+} from "../redux/dataSlice";
 
 export default function Profile() {
   const dataFromGithub = useSelector(selectedData);
+  const reposFromGithub = useSelector(selectedReposData);
   const loading = useSelector(loadingState);
 
   return (
@@ -26,10 +32,15 @@ export default function Profile() {
       {loading == false && (
         <>
           <InternalDiv width="100%">
-            <InternalDiv display="flex" flexDirection="column" width="30%">
-              <Link to={"/"}>
-                <BsFillSkipBackwardBtnFill />
-              </Link>
+            <InternalDiv display="flex" flexDirection="column" width="15%">
+              <InternalDiv>
+                <Link to={"/"} style={{ color: "white" }}>
+                  <strong>
+                    <MdKeyboardBackspace />
+                    <p>Início</p>
+                  </strong>
+                </Link>
+              </InternalDiv>
               <InternalDiv>
                 <ProfileImg src={dataFromGithub?.data?.avatar_url}></ProfileImg>
               </InternalDiv>
@@ -68,8 +79,8 @@ export default function Profile() {
                 </TextSpan>
               </InternalDiv>
             </InternalDiv>
-            <InternalDiv width="70%" backgroundColor="#777272" marginLeft="10%">
-              Repoinfo
+            <InternalDiv width="80%" backgroundColor="#777272" marginLeft="10%">
+              <Repos />
             </InternalDiv>
           </InternalDiv>
         </>
