@@ -8,13 +8,17 @@ interface StyledDivProps {
   width?: CSSProperties["width"];
   backgroundColor?: CSSProperties["backgroundColor"];
   marginLeft?: CSSProperties["marginLeft"];
+  justifyContent?: CSSProperties["justifyContent"];
 }
 
 export const MainContainer = styled.div`
   width: 100vw;
-  height: 100%;
+  height: 100;
   padding: 16px;
   background: #4f4f4f;
+  justify-content: center;
+  display: flex;
+  border-radius: 8px;
 `;
 
 export const InternalDiv = styled.div<StyledDivProps>`
@@ -25,8 +29,18 @@ export const InternalDiv = styled.div<StyledDivProps>`
   background-color: ${(props) =>
     props.backgroundColor ? props.backgroundColor : "#4f4f4f"};
   margin-left: ${(props) => (props.marginLeft ? props.marginLeft : "3px")};
-  justify-content: center;
-}
+  justify-content: ${(props) =>
+    props.justifyContent ? props.justifyContent : "flex-start"};
+
+  padding: 16px;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 0%;
+  }
 `;
 
 export const MainInput = styled.input`
@@ -34,6 +48,7 @@ export const MainInput = styled.input`
   height: 5vh;
   font-size: 1.5rem;
   border-radius: 8px;
+  width: 90%;
 `;
 
 export const Title = styled.h1`
@@ -64,6 +79,20 @@ export const Loading = styled.div`
 `;
 
 export const ProfileImg = styled.img`
-  width: 100%;
-  border-radius: 100px;
+  width: 60%;
+  border-radius: 200px;
+  margin: 8px;
+  @media screen and (max-width: 768px) {
+    width: 30%;
+    margin: 10%;
+  }
+`;
+
+export const TextSpan = styled.p`
+  @media screen and (min-width: 769px) and (max-width: 1239px) {
+    font-size: 0.7rem;
+  }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;

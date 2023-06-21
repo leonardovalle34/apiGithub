@@ -15,24 +15,25 @@ import {
 } from "./components/GlobalComponents";
 
 import { BsSearch } from "react-icons/bs";
-import { fetchDataAsync } from "./redux/dataAction";
+import { fetchDataAsync, fetchDataAsyncRepos } from "./redux/dataAction";
 
 function App() {
   const [user, setUser] = useState("");
   const dispatch = useDispatch();
 
   const getData = async () => {
-    return await dispatch(fetchDataAsync(user));
+    const response = dispatch(fetchDataAsync(user));
+    const responseRepos = dispatch(fetchDataAsyncRepos(user));
   };
 
   return (
     <MainContainer>
-      <div>
+      <InternalDiv display="flex" flexDirection="column">
         <Title>API Github</Title>
         <a href="#" rel="noreferrer">
           <img src={ghLogo} className="logo" alt="ghLogo" />
         </a>
-        <InternalDiv>
+        <InternalDiv width="100%" justifyContent="center">
           <MainInput
             onChange={(el: any) => setUser(el.target.value)}
             placeholder="Digite o nome do perfil"
@@ -44,7 +45,7 @@ function App() {
             </ButtonSearch>
           </Link>
         </InternalDiv>
-      </div>
+      </InternalDiv>
     </MainContainer>
   );
 }

@@ -1,4 +1,4 @@
-export interface IUser {
+interface data {
   avatar_url: string;
   followers: number;
   following: number;
@@ -6,4 +6,8 @@ export interface IUser {
   name: string;
   location: string;
   blog: string;
+}
+
+export interface IUser {
+  data : <data>
 }

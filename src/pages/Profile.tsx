@@ -1,3 +1,9 @@
+import { BsPeopleFill } from "react-icons/bs";
+import { BsPersonCircle } from "react-icons/bs";
+import { MdKeyboardBackspace } from "react-icons/md";
+import { MdLocationPin } from "react-icons/md";
+import { MdPersonPin } from "react-icons/md";
+import { MdInsertLink } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -6,11 +12,18 @@ import {
   InternalDiv,
   Loading,
   ProfileImg,
+  TextSpan,
 } from "../components/GlobalComponents";
-import { selectedData, loadingState } from "../redux/dataSlice";
+import Repos from "../components/Repos/Repos";
+import {
+  selectedData,
+  loadingState,
+  selectedReposData,
+} from "../redux/dataSlice";
 
 export default function Profile() {
   const dataFromGithub = useSelector(selectedData);
+  const reposFromGithub = useSelector(selectedReposData);
   const loading = useSelector(loadingState);
 
   return (
@@ -20,31 +33,54 @@ export default function Profile() {
         <>
           <InternalDiv width="100%">
             <InternalDiv display="flex" flexDirection="column" width="15%">
-              <Link to={"/"}>Back</Link>
+              <InternalDiv>
+                <Link to={"/"} style={{ color: "white" }}>
+                  <strong>
+                    <MdKeyboardBackspace />
+                    <p>Início</p>
+                  </strong>
+                </Link>
+              </InternalDiv>
               <InternalDiv>
                 <ProfileImg src={dataFromGithub?.data?.avatar_url}></ProfileImg>
               </InternalDiv>
-              <InternalDiv display="flex" flexDirection="column">
-                <p>
-                  @<strong>{dataFromGithub?.data?.login}</strong>
-                </p>
-                <p>{dataFromGithub?.data?.name}</p>
+              <InternalDiv>
+                <TextSpan>
+                  <MdPersonPin />
+                  <strong>{dataFromGithub?.data?.login}</strong>
+                </TextSpan>
               </InternalDiv>
               <InternalDiv>
-                <p>{dataFromGithub?.data?.followers}</p>
+                <TextSpan>
+                  <BsPersonCircle />
+                  {dataFromGithub?.data?.name}
+                </TextSpan>
               </InternalDiv>
               <InternalDiv>
-                <p>{dataFromGithub?.data?.following}</p>
+                <TextSpan>
+                  <BsPeopleFill />
+                  {dataFromGithub?.data?.followers} Followers
+                </TextSpan>
               </InternalDiv>
               <InternalDiv>
-                <p>{dataFromGithub?.data?.blog}</p>
+                <TextSpan>
+                  <BsPeopleFill />
+                  {dataFromGithub?.data?.following} Following
+                </TextSpan>
               </InternalDiv>
               <InternalDiv>
-                <p>{dataFromGithub?.data?.location}</p>
+                <TextSpan>
+                  <MdInsertLink /> {dataFromGithub?.data?.blog}
+                </TextSpan>
+              </InternalDiv>
+              <InternalDiv>
+                <TextSpan>
+                  <MdLocationPin /> {dataFromGithub?.data?.location}
+                </TextSpan>
               </InternalDiv>
             </InternalDiv>
-            <InternalDiv width="70%" backgroundColor="#777272" marginLeft="10%">
-              Repoinfo
+            <InternalDiv width="80%" backgroundColor="#777272" marginLeft="10%">
+              <Repos />
             </InternalDiv>
           </InternalDiv>
         </>
