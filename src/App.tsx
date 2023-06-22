@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import-helpers/order-imports */
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -33,7 +35,7 @@ function App() {
         <a href="#" rel="noreferrer">
           <img src={ghLogo} className="logo" alt="ghLogo" />
         </a>
-        <InternalDiv width="100%" justifyContent="center">
+        <InternalDiv width="100%" justifyContent="center" marginLeft="auto">
           <MainInput
             onChange={(el: any) => setUser(el.target.value)}
             placeholder="Digite o nome do perfil"
