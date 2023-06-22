@@ -9,7 +9,7 @@ export const InternalDivGrid = styled.div`
   grid-gap: 10px;
   width: 100%;
   background-color: #777272;
-  margin-left: 10%;
+  margin-left: 0%;
 
   @media screen and (max-width: 818px) {
     display: flex;

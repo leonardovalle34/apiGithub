@@ -78,7 +78,7 @@ export default function Profile() {
                 <Filter />
               </InternalDiv>
             </InternalDiv>
-            <InternalDiv width="80%" backgroundColor="#777272" marginLeft="10%">
+            <InternalDiv width="80%" backgroundColor="#777272" marginLeft="0%">
               <Repos />
             </InternalDiv>
           </InternalDiv>

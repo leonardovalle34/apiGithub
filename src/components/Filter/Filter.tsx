@@ -6,11 +6,13 @@ import { selectedReposData } from "../../redux/dataSlice";
 export default function Filter() {
   const repos = useSelector(selectedReposData);
   const arrOfLangs: string[] = [];
-  let arrOfFilters: string[] = [];
+  const arrOfFilters: string[] = [];
 
   const organizingArr = () => {
-    arrOfFilters = arrOfLangs.filter((el, i) => {
-      arrOfLangs.indexOf(el) === i;
+    arrOfLangs.map((el: string, i: number) => {
+      if (arrOfLangs.indexOf(el) === i && el !== null) {
+        arrOfFilters.push(el);
+      }
     });
     console.log(arrOfFilters);
   };
@@ -27,11 +29,14 @@ export default function Filter() {
 
   return (
     <>
-      <p>Retorno filtro</p>
-      <p>Retorno filtro</p>
-      <p>Retorno filtro</p>
-      <p>Retorno filtro</p>
-      <p>Retorno filtro</p>
+      <button>teste</button>
+      {arrOfFilters?.map((el: string, i: number) => {
+        return (
+          <>
+            <button key={i}>{el}</button>;
+          </>
+        );
+      })}
     </>
   );
 }
