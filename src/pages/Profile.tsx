@@ -7,6 +7,7 @@ import { MdInsertLink } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+import Filter from "../components/Filter/Filter";
 import {
   MainContainer,
   InternalDiv,
@@ -15,15 +16,10 @@ import {
   TextSpan,
 } from "../components/GlobalComponents";
 import Repos from "../components/Repos/Repos";
-import {
-  selectedData,
-  loadingState,
-  selectedReposData,
-} from "../redux/dataSlice";
+import { selectedData, loadingState } from "../redux/dataSlice";
 
 export default function Profile() {
   const dataFromGithub = useSelector(selectedData);
-  const reposFromGithub = useSelector(selectedReposData);
   const loading = useSelector(loadingState);
 
   return (
@@ -77,6 +73,9 @@ export default function Profile() {
                 <TextSpan>
                   <MdLocationPin /> {dataFromGithub?.data?.location}
                 </TextSpan>
+              </InternalDiv>
+              <InternalDiv>
+                <Filter />
               </InternalDiv>
             </InternalDiv>
             <InternalDiv width="80%" backgroundColor="#777272" marginLeft="10%">

@@ -25,7 +25,7 @@ interface StyledDivProps {
 export const ReposCard = styled.div`
   width: auto
   background-color: #4f4f4f;
-  border-left: 2.5px solid red;
+  border-left: 11.5px solid yellow;
   border-right: 1px solid grey;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
@@ -35,6 +35,7 @@ export const ReposCard = styled.div`
   color: black;
   border-radius: 8px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 12px;
 `;
 
 export const TextInsideCard = styled.p<StyledDivProps>`
