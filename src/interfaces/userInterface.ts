@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-interface data {
+interface IData {
   avatar_url: string;
   followers: number;
   following: number;
@@ -10,5 +10,5 @@ interface data {
 }
 
 export interface IUser {
-  data: data;
+  data: IData;
 }

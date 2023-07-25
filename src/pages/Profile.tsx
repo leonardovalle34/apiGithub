@@ -22,6 +22,8 @@ export default function Profile() {
   const dataFromGithub = useSelector(selectedData);
   const loading = useSelector(loadingState);
 
+  console.log(dataFromGithub);
+
   return (
     <MainContainer>
       {loading == true && <Loading />}
