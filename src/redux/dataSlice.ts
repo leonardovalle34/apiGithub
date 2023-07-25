@@ -57,7 +57,7 @@ const dataSliceState = createSlice({
 
 export const getDataState = dataSliceState.reducer;
 
-export const selectedData = (state: DataState) => state.data.dataReposState;
+export const selectedData = (state: DataState) => state.data.dataStateIn;
 export const loadingState = (state: DataState) => state.data.loading;
 export const selectedReposData = (state: DataState) =>
   state.data.dataReposState;

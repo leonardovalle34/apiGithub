@@ -15,7 +15,7 @@ export default function Repos() {
 
   return (
     <InternalDivGrid>
-      {reposData?.data?.map((el: any) => {
+      {reposData?.map((el: any) => {
         return (
           <ReposCard>
             <TextInsideCard>Name: {el.name}</TextInsideCard>
