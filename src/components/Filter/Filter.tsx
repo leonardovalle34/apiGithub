@@ -29,7 +29,6 @@ export default function Filter() {
 
   return (
     <>
-      <button>teste</button>
       {arrOfFilters?.map((el: string, i: number) => {
         return (
           <>
