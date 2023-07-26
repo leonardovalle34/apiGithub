@@ -5,18 +5,11 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { api } from "../utils/api";
 
-export const fetchDataAsync = createAsyncThunk(
-  "data/fetchData",
+export const fetchDataAndReposAsync = createAsyncThunk(
+  "data/fetchDataAndRepos",
   async (user: string): Promise<any> => {
-    const response = await api.get(user);
-    return response;
-  }
-);
-
-export const fetchDataAsyncRepos = createAsyncThunk(
-  "dataRepos/fetchData",
-  async (user: string): Promise<any> => {
-    const response = await api.get(`${user}/repos`);
-    return response;
+    const dataResponse = await api.get(user);
+    const reposResponse = await api.get(`${user}/repos`);
+    return { data: dataResponse, repos: reposResponse };
   }
 );

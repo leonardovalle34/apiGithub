@@ -16,18 +16,16 @@ import {
   InternalDiv,
 } from "./components/GlobalComponents";
 
+import { ThunkDispatch } from "redux-thunk";
 import { BsSearch } from "react-icons/bs";
-import { fetchDataAsync, fetchDataAsyncRepos } from "./redux/dataAction";
-import { AppDispatch, RootState } from "./redux/store";
+import { fetchDataAndReposAsync } from "./redux/dataAction";
 
 function App() {
   const [user, setUser] = useState("");
-  const dispatch = useDispatch<AppDispatch>();
-  type FetchDataAsyncAction = ReturnType<typeof fetchDataAsync>;
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const getData = async () => {
-    const response: FetchDataAsyncAction = dispatch(fetchDataAsync(user));
-    const responseRepos = dispatch(fetchDataAsyncRepos(user));
+    dispatch(fetchDataAndReposAsync(user));
   };
 
   return (
